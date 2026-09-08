@@ -11,12 +11,10 @@
 
 | Campo | Preenchimento |
 |---|---|
-| Turma | |
-| Data | |
-| Integrante 1 | |
-| Integrante 2 | |
-| Integrante 3 | |
-| Integrante 4 | |
+| Turma | N1 |
+| Data |01/09/2026 |
+| Integrante 1 |Jéssica Soares Dias |
+
 
 ## Orientações
 
@@ -41,12 +39,12 @@ Ligado    --pressionar--> Desligado
 
 Responda:
 
-1. Quantos estados existem?
-2. Qual é o estado inicial, considerando que a lâmpada começa apagada?
-3. Qual entrada provoca uma transição?
-4. Partindo de `Desligado`, qual será o estado após um acionamento?
-5. Partindo de `Desligado`, qual será o estado após dois acionamentos?
-6. Explique o funcionamento do sistema com suas palavras.
+1. Quantos estados existem? 2 , ligado e desligado 
+2. Qual é o estado inicial, considerando que a lâmpada começa apagada? Desligado 
+3. Qual entrada provoca uma transição? Quando o interruptor é pressionado 
+4. Partindo de `Desligado`, qual será o estado após um acionamento? Desligado - pressionar - Ligado 
+5. Partindo de `Desligado`, qual será o estado após dois acionamentos? Desligado - pressionar - Ligado - pressionar - Desligado 
+6. Explique o funcionamento do sistema com suas palavras. O primeiro estado é o desligado , ao pressionar o interruptor , ocorre a transição para ligado 
 
 ## Exercício 2 — Porta automática
 
@@ -56,13 +54,19 @@ Complete a tabela:
 
 | Estado atual | Entrada | Próximo estado |
 |---|---|---|
-| Fechado | pessoa_detectada | |
-| Fechado | nenhuma_pessoa | |
-| Aberto | pessoa_detectada | |
-| Aberto | nenhuma_pessoa | |
+| Fechado | pessoa_detectada | Aberto |
+| Fechado | nenhuma_pessoa | Fechado|
+| Aberto | pessoa_detectada | Aberto |
+| Aberto | nenhuma_pessoa | Fechado |
 
 Depois, desenhe o diagrama de estados correspondente e indique o estado inicial.
 
+DIAGRAMA 
+Fechado - pessoa detectada - Aberta 
+Fechado - nenhuma pessoa   - Fechado 
+
+Aberto - pessoa detectada  - Aberto 
+Aberto - nenhuma pessoa    - Fechado 
 ---
 
 # Parte 2 — Anatomia e definição formal
@@ -78,13 +82,13 @@ Considere um AFD com `Σ = {0,1}`, `Q = {q0,q1}`, estado inicial `q0`, estado fi
 
 Identifique e explique:
 
-1. o alfabeto `Σ`;
-2. o conjunto de estados `Q`;
-3. o estado inicial;
-4. o conjunto de estados finais `F`;
-5. os símbolos que podem ser lidos;
-6. o significado do círculo duplo em um diagrama;
-7. o significado da seta sem origem apontando para um estado.
+1. o alfabeto `Σ`; {0,1} São os símbolos que o autômato pode utilizar 
+2. o conjunto de estados `Q`; {q0,q1} São os estados que o autômato pode variar 
+3. o estado inicial;   Q0 
+4. o conjunto de estados finais `F`; {q1}
+5. os símbolos que podem ser lidos; 0 e 1 
+6. o significado do círculo duplo em um diagrama; Significa que ele chegou ao seu estado final 
+7. o significado da seta sem origem apontando para um estado. Significa que o autômato está em seu estado inicial 
 
 ## Exercício 4 — A quíntupla do AFD
 
@@ -98,13 +102,21 @@ Complete:
 
 | Elemento | Significado |
 |---|---|
-| `Σ` | |
-| `Q` | |
-| `δ` | |
-| `q0` | |
-| `F` | |
+| `Σ` | Alfabeto  | 
+| `Q` | Quantidade de estados |
+| `δ` | Transição  |
+| `q0` | Estado inicial |
+| `F` | Estado final |
 
 Explique por que esses cinco elementos são suficientes para definir o funcionamento de um AFD.
+Porque eles determinam:
+
+quais símbolos podem ser recebidos;
+quais estados existem;
+onde o processamento começa;
+para qual estado o autômato vai após cada símbolo;
+quais estados representam aceitação.
+Assim, é possível determinar o comportamento do autômato para qualquer cadeia de entrada.
 
 ---
 
@@ -122,13 +134,28 @@ Considere `Σ = {0,1}`, `Q = {q0,q1,q2}`, estado inicial `q0`, `F = {q1}` e:
 
 Responda:
 
-1. Qual é o resultado de `δ(q0,0)`?
-2. Qual é o resultado de `δ(q0,1)`?
-3. Qual é o resultado de `δ(q1,0)`?
-4. Qual é o resultado de `δ(q2,1)`?
-5. Qual é o estado de aceitação?
+1. Qual é o resultado de `δ(q0,0)`? Q0
+2. Qual é o resultado de `δ(q0,1)`? Q1
+3. Qual é o resultado de `δ(q1,0)`? Q2
+4. Qual é o resultado de `δ(q2,1)`? Q1
+5. Qual é o estado de aceitação? Q1
 6. Desenhe o diagrama correspondente à tabela.
-7. Justifique por que o autômato é determinístico.
+   - Q0
+  - 0 - Q0
+  - 1 - Q1
+
+   - Q1
+  - 0 - Q2
+  - 1 - Q1
+
+   - Q2
+  - 0 - Q1
+  - 1 - Q1
+
+Q1 é o estado final 
+8. Justifique por que o autômato é determinístico. 
+Porque para cada combinação de estado + símbolo de entrada existe exatamente uma única transição possível.
+
 
 ## Exercício 6 — Aceita ou rejeita?
 
@@ -154,11 +181,11 @@ Resultado: ACEITA
 
 | Cadeia | Caminho percorrido | Estado final | Resultado |
 |---|---|---|---|
-| `1` | | | |
-| `0011001` | | | |
-| `010010` | | | |
-| `1101` | | | |
-| `000011010` | | | |
+| `1` |q0 → q1 |q1 |Aceita|
+| `0011001` |q0 → q0 → q0 → q1 → q1 → q2 → q1 | q1| Aceita |
+| `010010` |q0 → q0 → q1 → q2 → q1 → q1 → q2 | q2| Rejeitada|
+| `1101` |q0 → q1 → q1 → q2 → q1 |q1 | Aceita |
+| `000011010` |q0 → q0 → q0 → q0 → q0 → q1 → q1 → q2 → q1 → q2 | q2| Rejeitada|
 
 ---
 
@@ -173,6 +200,54 @@ Construa um AFD sobre `Σ = {0,1}` que reconheça todas as cadeias que terminam 
 
 Entregue: conjunto de estados, alfabeto, estado inicial, estados finais, tabela, diagrama e teste de pelo menos cinco cadeias.
 
+Definição formal
+M = (Σ,Q,δ,q0,F)
+
+Σ = {0,1}
+Q = {q0,q1}
+q0 = q0
+F = {q1}
+
+Tabela de transições
+δ	0	1
+q0	q0	q1
+q1	q0	q1
+
+Diagrama
+→ q0 --1--> ((q1))
+  q0 --0--> q0
+  q1 --0--> q0
+  q1 --1--> q1
+  
+Testes
+Cadeia ε
+Nenhum símbolo é processado.
+
+Estado final: q0
+Resultado: REJEITA
+
+Cadeia 1
+q0 --1--> q1
+Resultado: ACEITA
+
+Cadeia 01
+q0 --0--> q0
+q0 --1--> q1
+Resultado: ACEITA
+
+Cadeia 100
+q0 --1--> q1
+q1 --0--> q0
+q0 --0--> q0
+Resultado: REJEITA
+
+Cadeia 1101
+q0 --1--> q1
+q1 --1--> q1
+q1 --0--> q0
+q0 --1--> q1
+Resultado: ACEITA
+
 ## Exercício 8 — Número par de símbolos `1`
 
 Construa um AFD sobre `Σ = {0,1}` que reconheça cadeias com quantidade par de símbolos `1`.
@@ -180,6 +255,72 @@ Construa um AFD sobre `Σ = {0,1}` que reconheça cadeias com quantidade par de 
 Analise: `ε`, `0`, `1`, `11`, `101`, `1100` e `10101`.
 
 Apresente a definição formal `M = (Σ, Q, δ, q0, F)`, a tabela, o diagrama e o processamento das cadeias. Lembre-se de que basta controlar duas situações: quantidade par ou ímpar de símbolos `1`.
+
+Estados
+qP: quantidade par de símbolos 1;
+qI: quantidade ímpar de símbolos 1.
+
+Definição formal
+M = (Σ,Q,δ,qP,F)
+
+Σ = {0,1}
+Q = {qP,qI}
+q0 = qP
+F = {qP}
+
+Tabela de transições
+δ	0	1
+qP	qP	qI
+qI	qI	qP
+O símbolo 0 não altera a quantidade de símbolos 1.
+O símbolo 1 alterna entre quantidade par e ímpar.
+
+Diagrama
+→ ((qP)) --1--> qI
+     ^           |
+     |-----1-----|
+
+qP --0--> qP
+qI --0--> qI
+
+Processamento das cadeias
+ε
+Estado inicial: qP
+Resultado: ACEITA
+
+0
+qP --0--> qP
+Resultado: ACEITA
+
+1
+qP --1--> qI
+Resultado: REJEITA
+
+11
+qP --1--> qI
+qI --1--> qP
+Resultado: ACEITA
+
+101
+qP --1--> qI
+qI --0--> qI
+qI --1--> qP
+Resultado: ACEITA
+
+1100
+qP --1--> qI
+qI --1--> qP
+qP --0--> qP
+qP --0--> qP
+Resultado: ACEITA
+
+10101
+qP --1--> qI
+qI --0--> qI
+qI --1--> qP
+qP --0--> qP
+qP --1--> qI
+Resultado: REJEITA
 
 ## Exercício 9 — Pelo menos dois zeros consecutivos
 
@@ -194,13 +335,105 @@ L(M) = {w ∈ {0,1}* | w possui pelo menos dois 0s consecutivos}
 
 Responda antes de construir:
 
-1. O que o estado inicial representa?
-2. O que ocorre quando aparece o primeiro `0`?
-3. O que ocorre quando outro `0` aparece imediatamente depois?
-4. Depois de encontrar `00`, a cadeia pode deixar de ser aceita?
-5. Quantos estados são necessários?
+1. O que o estado inicial representa? Representa que ainda não encontramos 00 e que não existe um zero pendente imediatamente anterior.
+2. O que ocorre quando aparece o primeiro `0`? O autômato vai para q1, indicando que um 0 foi encontrado.
+3. O que ocorre quando outro `0` aparece imediatamente depois? O autômato encontra 00 e vai para o estado final q2.
+4. Depois de encontrar `00`, a cadeia pode deixar de ser aceita? Não. Depois que 00 aparece, a cadeia continuará contendo dois zeros consecutivos, independentemente dos símbolos seguintes.
+5. Quantos estados são necessários? São necessários 3 estados.
 
 Apresente a quíntupla, a tabela, o diagrama e os testes.
+
+Definição formal
+M = (Σ,Q,δ,q0,F)
+
+Σ = {0,1}
+Q = {q0,q1,q2}
+q0 = q0
+F = {q2}
+
+Tabela de transições
+δ	0	1
+q0	q1	q0
+q1	q2	q0
+q2	q2	q2
+
+Diagrama
+→ q0 --0--> q1 --0--> ((q2))
+  q0 --1--> q0
+  q1 --1--> q0
+  q2 --0--> q2
+  q2 --1--> q2
+  
+Testes
+00
+q0 --0--> q1
+q1 --0--> q2
+Resultado: Aceita.
+
+001
+q0 --0--> q1
+q1 --0--> q2
+q2 --1--> q2
+Resultado: Aceita.
+
+100
+q0 --1--> q0
+q0 --0--> q1
+q1 --0--> q2
+Resultado: Aceita.
+
+1001
+q0 --1--> q0
+q0 --0--> q1
+q1 --0--> q2
+q2 --1--> q2
+Resultado: Aceita.
+
+110011
+q0 --1--> q0
+q0 --1--> q0
+q0 --0--> q1
+q1 --0--> q2
+q2 --1--> q2
+q2 --1--> q2
+Resultado: Aceita.
+
+0000
+q0 --0--> q1
+q1 --0--> q2
+q2 --0--> q2
+q2 --0--> q2
+Resultado: Aceita.
+
+ε
+Estado final: q0
+Resultado: Rejeita.
+
+0
+q0 --0--> q1
+Resultado: Rejeita.
+
+1
+q0 --1--> q0
+Resultado: Rejeita.
+
+01
+q0 --0--> q1
+q1 --1--> q0
+Resultado: Rejeita.
+
+10
+q0 --1--> q0
+q0 --0--> q1
+Resultado: Rejeita.
+
+10101
+q0 --1--> q0
+q0 --0--> q1
+q1 --1--> q0
+q0 --0--> q1
+q1 --1--> q0
+Resultado: Rejeita.
 
 ---
 
@@ -216,6 +449,53 @@ Verde → Amarelo → Vermelho → Verde
 
 Entregue o diagrama, a tabela de transições, a definição formal e uma explicação do funcionamento. Discuta se há sentido em definir estados de aceitação nesse modelo e justifique a escolha adotada.
 
+Estados:
+
+Verde
+Amarelo
+Vermelho
+Entrada:
+
+tempo
+Ciclo:
+
+Verde → Amarelo → Vermelho → Verde
+Tabela de transições
+Estado atual	Entrada	Próximo estado
+Verde	tempo	Amarelo
+Amarelo	tempo	Vermelho
+Vermelho	tempo	Verde
+
+Diagrama
+→ Verde --tempo--> Amarelo --tempo--> Vermelho
+     ^                                      |
+     |--------------- tempo ----------------|
+     
+Definição formal
+M = (Σ,Q,δ,q0,F)
+
+Σ = {tempo}
+Q = {Verde, Amarelo, Vermelho}
+q0 = Verde
+F = {Verde, Amarelo, Vermelho}
+
+Transições:
+
+δ(Verde,tempo) = Amarelo
+δ(Amarelo,tempo) = Vermelho
+δ(Vermelho,tempo) = Verde
+
+Funcionamento
+Cada vez que ocorre a entrada tempo, o semáforo passa para o próximo estado do ciclo.
+
+Estados de aceitação
+Nesse modelo, estados de aceitação não possuem a mesma importância de um AFD usado para reconhecer uma linguagem, pois o objetivo é modelar o funcionamento do semáforo.
+
+Uma escolha possível é considerar todos os estados como finais:
+
+F = {Verde, Amarelo, Vermelho}
+Isso ocorre porque, após qualquer quantidade de entradas tempo, o semáforo permanece em um estado válido
+
 ## Exercício 11 — Sistema de login
 
 Modele um sistema com as entradas `senha_correta` e `senha_incorreta`. Uma senha correta autentica o usuário; após três tentativas incorretas, o sistema fica bloqueado.
@@ -230,6 +510,66 @@ Determine:
 6. o comportamento após a autenticação e após o bloqueio.
 
 Responda: apenas os estados `Aguardando`, `Autenticado` e `Bloqueado` são suficientes para controlar três tentativas? Justifique e construa o AFD completo.
+
+O sistema possui as entradas:
+
+senha_correta
+senha_incorreta
+
+Após três tentativas incorretas, o sistema deve ficar bloqueado.
+
+Estados
+q0: nenhuma tentativa incorreta;
+q1: uma tentativa incorreta;
+q2: duas tentativas incorretas;
+qA: autenticado;
+qB: bloqueado.
+
+Alfabeto
+Σ = {senha_correta, senha_incorreta}
+Estado inicial
+q0
+Estado final
+F = {qA}
+
+Tabela de transições
+Estado	senha_correta	senha_incorreta
+q0	qA	q1
+q1	qA	q2
+q2	qA	qB
+qA	qA	qA
+qB	qB	qB
+
+Diagrama
+→ q0 --senha_incorreta--> q1 --senha_incorreta--> q2 --senha_incorreta--> qB
+  |                         |                         |
+  | senha_correta           | senha_correta           | senha_correta
+  |                         |                         |
+  +-----------------------> ((qA)) <-----------------+
+Após autenticação:
+
+qA --senha_correta--> qA
+qA --senha_incorreta--> qA
+Após bloqueio:
+
+qB --senha_correta--> qB
+qB --senha_incorreta--> qB
+Definição formal
+M = (Σ,Q,δ,q0,F)
+
+Σ = {senha_correta, senha_incorreta}
+Q = {q0,q1,q2,qA,qB}
+q0 = q0
+F = {qA}
+Apenas Aguardando, Autenticado e Bloqueado são suficientes?
+Não.
+
+O sistema precisa distinguir entre:
+
+zero tentativas incorretas;
+uma tentativa incorreta;
+duas tentativas incorretas.
+Somente assim é possível identificar exatamente quando ocorre a terceira tentativa incorreta e bloquear o usuário.
 
 ---
 
@@ -248,14 +588,32 @@ Escolha um dos AFDs dos exercícios 7, 8 ou 9 e implemente-o no JFLAP.
 
 Inclua um print do AFD, a tabela de testes e uma breve explicação.
 
+Estados
+q0
+q1
+q2
+
+Configuração:
+
+q0 como estado inicial;
+q2 como estado final.
+
+Transições
+q0 --0--> q1 -- 0 --> q2  
+q0 --1--> q0
+q1 --1--> q0
+q2 --0--> q2
+q2 --1--> q2
+
+Tabela de testes
 | Cadeia | Resultado esperado | Resultado no JFLAP | Conferência |
 |---|---|---|---|
-| | | | |
-| | | | |
-| | | | |
-| | | | |
-| | | | |
-| | | | |
+|00 |Aceita |Aceita |Correto |
+|001 |Aceita |Aceita |Correto |
+|100 |Aceita |Aceita |Correto |
+|ε |Rejeita |Rejeita |Correto |
+|1 |Rejeita |Rejeita |Correto |
+|01 |Rejeita |Rejeita |Correto |
 
 ---
 
