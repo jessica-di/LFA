@@ -31,11 +31,11 @@ Ao concluir a atividade, o estudante deverá ser capaz de:
 
 Durante a leitura, marque no artigo:
 
-- uma passagem que apresente a dificuldade enfrentada pelos estudantes;
-- uma justificativa para o uso de ferramentas educacionais;
-- duas características que diferenciem as ferramentas analisadas;
-- uma limitação ou lacuna percebida no estudo;
-- uma afirmação com a qual você concorda ou discorda.
+- uma passagem que apresente a dificuldade enfrentada pelos estudantes;     É comum que os materiais e as atividades didáticas de LFA adotem um enfoque essencialmente algébrico, o que exige dos alunos não apenas uma boa formação matemática, mas também, e principalmente, uma grande capacidade de raciocínio lógico e abstrato. Por esse motivo, os estudantes de tais textos precisam lidar com um nível de complexidade adicional, além daquele que é inerente aos assuntos da área, para conseguir bons resultados na disciplina [Ramos 2009].  
+- uma justificativa para o uso de ferramentas educacionais;    Nesse contexto, o uso de ferramentas que aumentem a interação e a resposta visual do conteúdo ao interagir com o usuário pode fazer da experiência um caminho mais intuitivo, lúdico e simples para diversos alunos.
+- duas características que diferenciem as ferramentas analisadas; 4 ferramentas são Web e 3 são instalavéis 
+- uma limitação ou lacuna percebida no estudo; a linguagem de programa
+- uma afirmação com a qual você concorda ou discorda.     Nesse contexto, o uso de ferramentas que aumentem a interação e a resposta visual do conteúdo ao interagir com o usuário pode fazer da experiência um caminho mais intuitivo, lúdico e simples para diversos alunos.
 
 Registre suas anotações no quadro abaixo.
 
